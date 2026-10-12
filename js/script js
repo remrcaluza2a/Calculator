@@ -1,0 +1,43 @@
+const starsContainer = document.getElementById('stars');
+const starCount = 40;
+for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('span');
+    star.className = 'star';
+    star.innerHTML = '★';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 2 + 's';
+    star.style.fontSize = (Math.random() * 16 + 12) + 'px';
+    starsContainer.appendChild(star);
+}
+
+function appendValue(val) {
+    let display = document.getElementById('display');
+    if (display.value === '0' && val !== '.') {
+        display.value = val;
+    } else {
+        display.value += val;
+    }
+}
+
+function clearDisplay() {
+    document.getElementById('display').value = '0';
+}
+
+function backspace() {
+    let display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
+    if (display.value === '') display.value = '0';
+}
+
+function calculate() {
+    let display = document.getElementById('display');
+    try {
+        let expr = display.value.replace(/%/g, '/100');
+        let result = eval(expr);
+        display.value = Number.isInteger(result) ? result : result.toFixed(2);
+    } catch {
+        display.value = 'Error';
+        setTimeout(() => display.value = '0', 1500);
+    }
+}
