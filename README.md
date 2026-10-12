@@ -1,2 +1,4 @@
-# Calculator
-Cute pink stars design.
+# 🧮 My Calculator
+👉 **View my portfolio website here:**
+
+or open `index.html` in this repository
